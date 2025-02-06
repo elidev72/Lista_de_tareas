@@ -8,6 +8,10 @@ class TareaService:
         return Tarea.query.get_or_404(id)
     
     @staticmethod
+    def traer_todas():
+        return Tarea.query.all()
+    
+    @staticmethod
     def agregar_tarea(tarea: Tarea):
         guardar(tarea)
     

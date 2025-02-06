@@ -22,6 +22,16 @@ def crear_tarea():
 def mostrar_tarea(id):
     return tsc.dump(ts.traer_por_id(id)), 200
 
+@app.route('/api/mostrar-tareas')
+def mostrar_tareas():
+    tareas = []
+    aux = ts.traer_todas()
+    
+    for t in aux:
+        tareas.append(tsc.dump(t))
+    
+    return tareas, 200
+
 @app.route('/api/actualizar-tarea/<int:id>', methods=['PUT'])
 def actualizar_tarea(id: int):
     dato_json = request.get_json()
